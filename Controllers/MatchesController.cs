@@ -1,3 +1,6 @@
+// MatchesController.cs
+
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EsportsLeagueApi01.Data;
@@ -59,6 +62,9 @@ public class MatchesController : ControllerBase
             .FirstOrDefaultAsync(m => m.Id == id);
     }
 
+
+    
+
     // Get all matches
     // All matches example url: http://localhost:5236/api/matches
     // By status example url: http://localhost:5236/api/matches?status=Completed
@@ -88,8 +94,12 @@ public class MatchesController : ControllerBase
         return Ok(ToResponse(match));
     }
 
+
+
+
     // Create a match
     // POST api/matches
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(CreateMatchRequest request)
     {
@@ -129,6 +139,7 @@ public class MatchesController : ControllerBase
 
     // Start a match
     // PATCH api/matches/{Match.Id}/start
+    [Authorize]
     [HttpPatch("{id}/start")]
     public async Task<IActionResult> Start(int id)
     {
@@ -149,6 +160,7 @@ public class MatchesController : ControllerBase
 
     // Change a match's score
     // PATCH api/matches/{Match.Id}/score
+    [Authorize]
     [HttpPatch("{id}/score")]
     public async Task<IActionResult> UpdateScore(int id, UpdateMatchRequest request)
     {
@@ -169,6 +181,7 @@ public class MatchesController : ControllerBase
 
     // Complete a match
     // PATCH api/matches/{Match.Id}/complete
+    [Authorize]
     [HttpPatch("{id}/complete")]
     public async Task<IActionResult> Complete(int id)
     {
@@ -189,6 +202,7 @@ public class MatchesController : ControllerBase
 
     // Delete a match
     // DELETE api/matches/{Match.Id}
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

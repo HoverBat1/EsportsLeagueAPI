@@ -125,6 +125,54 @@ Content-Type: application/json
 }
 ```
 
+## Authentication
+
+Write endpoints (POST, PUT, PATCH, DELETE) require a valid JWT token. GET endpoints are public.
+
+### Register an Account
+
+```http
+POST /api/auth/register
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password123"
+}
+```
+
+### Login
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "password123"
+}
+```
+
+Both return a token:
+
+```json
+{
+    "token": "eyJhbGci...",
+    "username": "admin",
+    "expiresAt": "2026-05-02T14:47:44Z"
+}
+```
+
+### Using the Token
+
+Include the token in the `Authorization` header of protected requests:
+
+```
+Authorization: Bearer eyJhbGci...
+```
+
+In Thunder Client, use the **Auth** tab → **Bearer Token** and paste the token value.
+
 ## Validation Rules
 
 **Teams**

@@ -64,4 +64,12 @@ public static class League
         public static readonly string[] All = [Scheduled, Live, Completed];
         public static readonly int MaxLength = All.Max(a => a.Length);
     }
+
+    public static class Auth
+    {
+        public const int UsernameLengthMin = 3;
+        public const int UsernameLengthMax = 30;
+        public const int PasswordLengthMin = 6;
+        public static readonly string PasswordLengthMinErrorMessage = $"Password must be at least {PasswordLengthMin} characters";
+    }
 }

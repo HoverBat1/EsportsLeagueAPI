@@ -1,5 +1,6 @@
 // PlayersController.cs
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EsportsLeagueApi01.Data;
@@ -29,6 +30,8 @@ public class PlayersController : ControllerBase
         TeamId = p.TeamId, 
         TeamName = p.Team?.Name ?? string.Empty
     };
+
+
 
 
     // Get all players in the league with optional filter by IsActive state
@@ -114,6 +117,7 @@ public class PlayersController : ControllerBase
 
     // Change value of every property of a player
     // PUT api/players/{Player.Id}
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, UpdatePlayerRequest request)
     {
@@ -138,6 +142,7 @@ public class PlayersController : ControllerBase
 
     // Change the value of a specific property of a player
     // PATCH api/players/{Player.Id}
+    [Authorize]
     [HttpPatch("{id}")]
     public async Task<IActionResult> Patch(int id, PatchPlayerRequest request)
     {
@@ -184,6 +189,7 @@ public class PlayersController : ControllerBase
 
     // Add a player to a team
     // POST api/players/team{Team.Id}
+    [Authorize]
     [HttpPost("team{teamId}")]
     public async Task<IActionResult> Create(int teamId, CreatePlayerRequest request)
     {
@@ -218,6 +224,7 @@ public class PlayersController : ControllerBase
 
     // Delete a player
     // DELETE api/players/{Player.Id}
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

@@ -1,5 +1,6 @@
 // TeamsController.cs
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using EsportsLeagueApi01.Data;
@@ -222,6 +223,7 @@ public class TeamsController : ControllerBase
 
     // Change all team properties
     // PUT api/teams/{Team.Id}
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, UpdateTeamRequest request)
     {
@@ -245,6 +247,7 @@ public class TeamsController : ControllerBase
 
     // Change specific team properties
     // PATCH api/teams/{Team.Id}
+    [Authorize]
     [HttpPatch("{id}")]
     public async Task<IActionResult> Patch(int id, PatchTeamRequest request)
     {
@@ -286,6 +289,7 @@ public class TeamsController : ControllerBase
 
     // Create a team
     // POST api/teams
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(CreateTeamRequest request)
     {
@@ -310,6 +314,7 @@ public class TeamsController : ControllerBase
 
     // Delete a team
     // DELETE api/teams/{Team.Id}
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {

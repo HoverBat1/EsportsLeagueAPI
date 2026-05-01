@@ -1,5 +1,9 @@
-using EsportsLeagueApi01.Data;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
+using EsportsLeagueApi01.Data;
+using EsportsLeagueApi01.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,9 +13,22 @@ var builder = WebApplication.CreateBuilder(args);
 //         System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 // });
 builder.Services.AddControllers().AddNewtonsoftJson();
-
 builder.Services.AddDbContext<LeagueDbContext>(options => options.UseSqlite("Data Source=league.db"));
 builder.Services.AddOpenApi();
+builder.Services.AddSingleton<TokenService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer           = true, 
+        ValidateAudience         = true, 
+        ValidateLifetime         = true, 
+        ValidateIssuerSigningKey = true, 
+        ValidIssuer              = builder.Configuration["Jwt:Issuer"], 
+        ValidAudience            = builder.Configuration["Jwt:Audience"], 
+        IssuerSigningKey         = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
+    };
+});
 
 var app = builder.Build();
 
@@ -22,6 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
