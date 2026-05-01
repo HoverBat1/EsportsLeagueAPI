@@ -28,6 +28,7 @@ The API will be available at `http://localhost:5236`.
 
 ## Project Structure
 
+```
 EsportsLeagueApi/
 ├── Controllers/        # API endpoints
 ├── Data/               # DbContext and database config
@@ -35,6 +36,7 @@ EsportsLeagueApi/
 ├── Models/             # Database entity classes
 ├── Constants.cs        # League constants (regions, roles, etc.)
 └── Program.cs          # App configuration and DI setup
+```
 
 ## API Endpoints
 
