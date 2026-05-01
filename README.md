@@ -24,7 +24,7 @@ dotnet ef database update
 dotnet run
 ```
 
-The API will be available at `http://localhost:5236`.
+The API will be available at `http://localhost:{port}` — check the terminal output for the exact port number. Example: `http://localhost:5236`
 
 ## Project Structure
 
