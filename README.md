@@ -18,7 +18,7 @@ A RESTful API for managing an esports league — teams, players, and matches. Bu
 ### Running Locally
 
 ```bash
-git clone https://github.com/yourusername/EsportsLeagueApi.git
+git clone git clone https://github.com/HoverBat1/EsportsLeagueAPI.git
 cd EsportsLeagueApi
 dotnet ef database update
 dotnet run
