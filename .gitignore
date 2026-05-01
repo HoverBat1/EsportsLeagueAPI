@@ -10,6 +10,7 @@ obj/
 # App settings with secrets
 appsettings.json
 appsettings.Development.json
+EsportsLeagueApi01.http
 
 # VS Code
 .vscode/
