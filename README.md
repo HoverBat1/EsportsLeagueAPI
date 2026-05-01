@@ -4,9 +4,13 @@ A RESTful API for managing an esports league — teams, players, and matches. Bu
 
 ## Tech Stack
 
+## Tech Stack
+
 - **ASP.NET Core** — Web API framework
 - **Entity Framework Core** — ORM for database access
 - **SQLite** — Lightweight local database
+- **JWT Bearer Authentication** — Secure token-based auth
+- **BCrypt** — Password hashing
 - **C# 12 / .NET 8**
 
 ## Getting Started
@@ -192,6 +196,6 @@ In Thunder Client, use the **Auth** tab → **Bearer Token** and paste the token
 
 ## Future Plans
 
-- [ ] JWT authentication
-- [ ] Global error handling middleware
+- [x] JWT authentication
+- [x] Global error handling middleware
 - [ ] Frontend UI (Blazor or React)
