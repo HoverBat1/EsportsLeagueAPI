@@ -1,3 +1,27 @@
+# Build output
 bin/
 obj/
+
+# Database
 *.db
+*.db-shm
+*.db-wal
+
+# App settings with secrets
+appsettings.json
+appsettings.Development.json
+
+# VS Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.user
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+.nuget/
