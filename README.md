@@ -26,7 +26,7 @@ dotnet run
 
 Copy code from `appsettings.example.json` into `appsettings.json` and make up your own 32 character string value for "Key".
 
-The API will be available at `http://localhost:{port}` — check the terminal output for the exact port number. Example: `http://localhost:5236`
+The API will be available at `http://localhost:{port}` — check the terminal output for the exact port number. Example: `http://localhost:1234`
 
 ## Project Structure
 
