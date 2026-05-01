@@ -94,7 +94,7 @@ Content-Type: application/json
 
 {
     "name": "Team Mars",
-    "region": "NA"
+    "region": "EU"
 }
 ```
 
