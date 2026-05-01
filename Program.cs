@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using EsportsLeagueApi01.Data;
 using EsportsLeagueApi01.Services;
+using EsportsLeagueApi01.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,12 +33,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
+if (app.Environment.IsDevelopment()) app.MapOpenApi();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

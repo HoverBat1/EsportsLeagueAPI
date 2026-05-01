@@ -55,6 +55,20 @@ public class TeamsController : ControllerBase
         WinPercent =  stats.WinPercent
     };
 
+    // private TeamStatsResponse ToStatsResponse2(Tuple<Team, TeamStats> tuple) => new()
+    // {
+    //     Id = tuple.Item1.Id, 
+    //     Name = tuple.Item1.Name, 
+    //     Region = tuple.Item1.Region, 
+    //     IsActive = tuple.Item1.IsActive, 
+    //     MatchesPlayed = tuple.Item2.Played, 
+    //     Wins = tuple.Item2.Wins, 
+    //     Losses = tuple.Item2.Losses, 
+    //     Ties = tuple.Item2.Ties, 
+    //     Goals = tuple.Item2.Goals, 
+    //     WinPercent =  tuple.Item2.WinPercent
+    // };
+
 
 
 
