@@ -27,7 +27,6 @@ public class AuthController : ControllerBase
 
 
     // POST api/auth/register
-    [Authorize]
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
@@ -55,7 +54,6 @@ public class AuthController : ControllerBase
     }
 
     // POST api/auth/login
-    [Authorize]
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {

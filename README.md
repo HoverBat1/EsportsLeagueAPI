@@ -32,6 +32,10 @@ Copy code from `appsettings.example.json` into `appsettings.json` and make up yo
 
 The API will be available at `http://localhost:{port}` — check the terminal output for the exact port number. Example: `http://localhost:1234`
 
+## Frontend
+
+A React frontend for this API is available at [esports-league-ui](https://github.com/HoverBat1/esports-league-ui).
+
 ## Project Structure
 
 ```
