@@ -21,21 +21,21 @@ public class TeamResponse
 public class CreateTeamRequest
 {
     [Required(ErrorMessage = "Team name is required")]
-    [MinLength(League.Team.NameLengthMin)]
-    [MaxLength(League.Team.NameLengthMax)]
+    [MinLength(League.Team.NameLengthMin, ErrorMessage = League.Team.NameLengthRangeError)]
+    [MaxLength(League.Team.NameLengthMax, ErrorMessage = League.Team.NameLengthRangeError)]
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Region is required")]
     public string Region { get; set; } = string.Empty;
 
-    //public bool IsActive { get; set; }
+    // public bool IsActive { get; set; }
 }
 
 public class UpdateTeamRequest
 {
     [Required(ErrorMessage = "Team name is required")]
-    [MinLength(League.Team.NameLengthMin)]
-    [MaxLength(League.Team.NameLengthMax)]
+    [MinLength(League.Team.NameLengthMin, ErrorMessage = League.Team.NameLengthRangeError)]
+    [MaxLength(League.Team.NameLengthMax, ErrorMessage = League.Team.NameLengthRangeError)]
     public string Name { get; set; } = string.Empty;
 
     [Required(ErrorMessage = "Region is required")]
@@ -46,12 +46,12 @@ public class UpdateTeamRequest
 
 public class PatchTeamRequest
 {
-    //[Required(ErrorMessage = "Team name is required")]
-    //[MinLength(League.Team.NameLengthMin)]
-    //[MaxLength(League.Team.NameLengthMax)]
+    // [Required(ErrorMessage = "Team name is required")]
+    // [MinLength(League.Team.NameLengthMin, ErrorMessage = League.Team.NameLengthRangeError)]
+    // [MaxLength(League.Team.NameLengthMax, ErrorMessage = League.Team.NameLengthRangeError)]
     public string? Name { get; set; }
 
-    //[Required(ErrorMessage = "Region is required")]
+    // [Required(ErrorMessage = "Region is required")]
     public string? Region { get; set; }
 
     public bool? IsActive { get; set; }

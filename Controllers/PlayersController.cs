@@ -123,7 +123,7 @@ public class PlayersController : ControllerBase
     {
         if (!League.Roles.All.Contains(request.Role))
         {
-            return BadRequest($"Invalid role. Must be one of: {string.Join(", ", League.Roles.All)}");
+            return BadRequest(League.Roles.InvalidError);
         }
         
         var player = await _db.Players
@@ -156,7 +156,7 @@ public class PlayersController : ControllerBase
             if (request.Username.Length < League.Player.UsernameLengthMin 
             ||  request.Username.Length > League.Player.UsernameLengthMax )
             {
-                return BadRequest($"Username length must be between {League.Player.UsernameLengthMin} and {League.Player.UsernameLengthMax}");
+                return BadRequest(League.Player.UsernameLengthRangeError);
             }
             
             player.Username = request.Username;
@@ -166,7 +166,7 @@ public class PlayersController : ControllerBase
         {
             if (!League.Roles.All.Contains(request.Role))
             {
-                return BadRequest($"Invalid role. Must be one of: {string.Join(", ", League.Roles.All)}");
+                return BadRequest(League.Roles.InvalidError);
             }
             
             player.Role = request.Role;
@@ -198,7 +198,7 @@ public class PlayersController : ControllerBase
 
         if (!League.Roles.All.Contains(request.Role))
         {
-            return BadRequest($"Invalid role. Must be one of: {string.Join(", ", League.Roles.All)}");
+            return BadRequest(League.Roles.InvalidError);
         }
 
         var playerCount = await _db.Players.CountAsync(p => p.TeamId == teamId);

@@ -102,7 +102,6 @@ public class TeamsController : ControllerBase
         var teams = await _db.Teams.ToArrayAsync();
         if (teams.Length == 0) return Ok("No teams found");
         var matches = await _db.Matches.ToArrayAsync();
-        //if (matches.Length == 0) return Ok("No matches found");
 
         TeamStatsResponse[] responses = new TeamStatsResponse[teams.Length];
         for (var i = 0; i < teams.Length; i++)
@@ -121,7 +120,6 @@ public class TeamsController : ControllerBase
         var team = await _db.Teams.FirstOrDefaultAsync(t => t.Id == id);
         if (team is null) return NotFound($"Team {id} not found");
         var matches = await _db.Matches.ToArrayAsync();
-        //if (matches.Length == 0) return Ok("No matches found");
 
         return Ok(ToStatsResponse(TeamStats.GetStats(team, matches)));
     }
@@ -134,7 +132,6 @@ public class TeamsController : ControllerBase
         var teams = await _db.Teams.ToArrayAsync();
         if (teams.Length == 0) return Ok("No teams found");
         var matches = await _db.Matches.ToArrayAsync();
-        //if (matches.Length == 0) return Ok("No matches found");
 
         List<TeamStats> teamsStats = [];
         foreach (var team in teams) teamsStats.Add(TeamStats.GetStats(team, matches));
@@ -243,7 +240,7 @@ public class TeamsController : ControllerBase
     {
         if (!League.Regions.All.Contains(request.Region))
         {
-            return BadRequest($"Invalid region. Must be one of: {string.Join(", ", League.Regions.All)}");
+            return BadRequest(League.Regions.InvalidError);
         }
         
         var team = await _db.Teams
@@ -275,7 +272,7 @@ public class TeamsController : ControllerBase
             if (request.Name.Length < League.Team.NameLengthMin 
             ||  request.Name.Length > League.Team.NameLengthMax )
             {
-                return BadRequest($"Name length be between {League.Team.NameLengthMin} and {League.Team.NameLengthMax}");
+                return BadRequest(League.Team.NameLengthRangeError);
             }
             
             team.Name = request.Name;
@@ -285,7 +282,7 @@ public class TeamsController : ControllerBase
         {
             if (!League.Regions.All.Contains(request.Region))
             {
-                return BadRequest($"Invalid region. Must be one of: {string.Join(", ", League.Regions.All)}");
+                return BadRequest(League.Regions.InvalidError);
             }
             
             team.Region = request.Region;
@@ -310,7 +307,7 @@ public class TeamsController : ControllerBase
         // Custom validation - region must be a known value
         if (!League.Regions.All.Contains(request.Region))
         {
-            return BadRequest($"Invalid region. Must be one of: {string.Join(", ", League.Regions.All)}");
+            return BadRequest(League.Regions.InvalidError);
         }
 
         var team = new Team

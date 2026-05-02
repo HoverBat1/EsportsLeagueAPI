@@ -4,7 +4,6 @@ using EsportsLeagueApi01.Data;
 using EsportsLeagueApi01.Models;
 using EsportsLeagueApi01.DTOs;
 using EsportsLeagueApi01.Services;
-using Microsoft.AspNetCore.Authorization;
 
 namespace EsportsLeagueApi01.Controllers;
 

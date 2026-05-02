@@ -9,6 +9,7 @@ public static class League
         public const string APAC = "APAC";
         public static readonly string[] All = [NA, EU, APAC];
         public static readonly int MaxLength = All.Max(a => a.Length);
+        public static readonly string InvalidError = $"Invalid region. Must be one of: {string.Join(", ", All)}";
     }
 
     public static class Roles
@@ -20,21 +21,33 @@ public static class League
         public const string Mid     = "Mid";
         public static readonly string[] All = [Carry, Support, Tank, Jungler, Mid];
         public static readonly int MaxLength = All.Max(a => a.Length);
+        public static readonly string InvalidError = $"Invalid role. Must be one of: {string.Join(", ", All)}";
     }
 
     public static class Team
     {
-        public const int NameLengthMin = 2;
-        public const int NameLengthMax = 50;
+        public const int    NameLengthMin    =  2;
+        public const string NameLengthMinStr = "2";  // A const string cannot interpolate a number, even if the number is a const
+        public const int    NameLengthMax    =  50;
+        public const string NameLengthMaxStr = "50"; // A const string cannot interpolate a number, even if the number is a const
+        public const string NameLengthRangeError = $"Length must be between {NameLengthMinStr} and {NameLengthMaxStr} characters";
+        
         public const int RosterMax = 5;
     }
 
     public static class Player
     {
-        public const int UsernameLengthMin = 2;
-        public const int UsernameLengthMax = 30;
-        public const int SkillMin = 1;
-        public const int SkillMax = 100;
+        public const int    UsernameLengthMin    =  2;
+        public const string UsernameLengthMinStr = "2";  // A const string cannot interpolate a number, even if the number is a const
+        public const int    UsernameLengthMax    =  30;
+        public const string UsernameLengthMaxStr = "30"; // A const string cannot interpolate a number, even if the number is a const
+        public const string UsernameLengthRangeError = $"Length must be between {UsernameLengthMinStr} and {UsernameLengthMaxStr} characters";
+
+        public const int    SkillMin    =  1;
+        public const string SkillMinStr = "1";   // A const string cannot interpolate a number, even if the number is a const
+        public const int    SkillMax    =  100;
+        public const string SkillMaxStr = "100"; // A const string cannot interpolate a number, even if the number is a const
+        public const string SkillRangeError = $"Skill must be between {SkillMinStr} and {SkillMaxStr}";
     }
 
     public static class Modes
@@ -67,9 +80,14 @@ public static class League
 
     public static class Auth
     {
-        public const int UsernameLengthMin = 3;
-        public const int UsernameLengthMax = 30;
-        public const int PasswordLengthMin = 6;
-        public static readonly string PasswordLengthMinErrorMessage = $"Password must be at least {PasswordLengthMin} characters";
+        public const int    UsernameLengthMin    =  3;
+        public const string UsernameLengthMinStr = "3";  // A const string cannot interpolate a number, even if the number is a const
+        public const int    UsernameLengthMax    =  30;
+        public const string UsernameLengthMaxStr = "30"; // A const string cannot interpolate a number, even if the number is a const
+        public const string UsernameLengthRangeError = $"Length must be between {UsernameLengthMinStr} and {UsernameLengthMaxStr} characters";
+        
+        public const int    PasswordLengthMin    =  6;
+        public const string PasswordLengthMinStr = "6"; // A const string cannot interpolate a number, even if the number is a const
+        public const string PasswordLengthMinError = $"Password must be at least {PasswordLengthMinStr} characters";
     }
 }
